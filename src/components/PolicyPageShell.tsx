@@ -18,7 +18,7 @@ export default function PolicyPageShell({
 }: PolicyPageShellProps) {
   return (
     <SiteChrome>
-      <div style={{ background: "#F3F1EA", color: "#1A1F21", paddingTop: "72px" }}>
+      <div style={{ background: "#F3F1EA", color: "#1A1F21", paddingTop: "100px" }}>
         <div
           style={{
             background: "#00214D",
