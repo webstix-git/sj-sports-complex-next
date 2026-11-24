@@ -249,16 +249,25 @@ export default function HomePage() {
     { src: "/images/img-3.jpg", alt: "Aerial rendering of the baseball and softball fields" },
   ];
 
-  const galleryLightbox = [
-    { src: "/images/img-12.jpg", alt: "Athletes celebrating on the field" },
-    { src: "/images/img-6.jpg", alt: "Kids catching a pass" },
-    { src: "/images/img-11.jpg", alt: "Flag football matchup" },
-    { src: "/images/img-9.jpg", alt: "Player running with the football" },
-    { src: "/images/img-10.jpg", alt: "Open-field flag pull" },
-    { src: "/images/img-13.jpg", alt: "Kids tracking a pass" },
-    { src: "/images/img-8.jpg", alt: "Bears paw prints on the trail" },
-    { src: "/images/img-5.jpg", alt: "Championship trophy circle" },
+  const galleryItems = [
+    { src: "/images/gallery/gallery-01.jpg", alt: "SJ Bears cornhole boards on the grass" },
+    { src: "/images/gallery/gallery-02.jpg", alt: "Community members with a cornhole board" },
+    { src: "/images/gallery/gallery-03.jpg", alt: "SJ Bears tailgate gear and cooler setup" },
+    { src: "/images/gallery/gallery-04.jpg", alt: "Young athletes flexing after flag football" },
+    { src: "/images/gallery/gallery-05.jpg", alt: "Flag football player running with the ball" },
+    { src: "/images/gallery/gallery-06.jpg", alt: "Kids in action during a flag football game" },
+    { src: "/images/gallery/gallery-07.jpg", alt: "Players reaching for a pass on the field" },
+    { src: "/images/gallery/gallery-08.jpg", alt: "Softball player connecting at the plate" },
+    { src: "/images/gallery/gallery-09.jpg", alt: "Night rendering of the youth sports park" },
+    { src: "/images/gallery/gallery-10.jpg", alt: "Baseball team celebrating around a championship trophy" },
+    { src: "/images/gallery/gallery-11.jpg", alt: "Young Bears player holding a helmet at Michigan Stadium" },
+    { src: "/images/gallery/gallery-12.jpg", alt: "Flag football catch under a blue sky" },
+    { src: "/images/gallery/gallery-13.jpg", alt: "Two players matching up in flag football" },
+    { src: "/images/gallery/gallery-14.jpg", alt: "Young athlete throwing a football" },
+    { src: "/images/gallery/gallery-15.jpg", alt: "Open-field flag football chase" },
+    { src: "/images/gallery/gallery-16.jpg", alt: "Players racing for the football" },
   ];
+  const galleryLightbox = galleryItems;
 
   const openLightbox = (items: { src: string; alt: string }[], index: number) => {
     setLightbox({ items, index });
@@ -330,17 +339,24 @@ export default function HomePage() {
           display: 'flex',
           alignItems: 'flex-end',
           borderRadius: '0 0 48px 48px',
+          boxSizing: 'border-box',
+          paddingTop: 'var(--sj-hero-safe-top, 188px)',
         }}
       >
         <div ref={heroBgRef} style={{position: 'absolute', left: '0', right: '0', top: '-14%', bottom: '-14%', willChange: 'transform'}}>
-          <img src="/images/img-7.jpg" alt="Hero action photo" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+          <img
+            src="/images/img-7.jpg"
+            alt="Hero action photo"
+            className="sj-hero-bg-img"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: '72% center', display: 'block' }}
+          />
         </div>
         <div
           style={{
             position: 'absolute',
             inset: 0,
             background:
-              'linear-gradient(100deg,rgba(0,33,77,.97) 0%,rgba(0,33,77,.85) 38%,rgba(0,33,77,.15) 75%),linear-gradient(0deg,rgba(0,33,77,.9) 0%,rgba(0,33,77,0) 40%)',
+              'linear-gradient(100deg,rgba(0,33,77,.97) 0%,rgba(0,33,77,.9) 42%,rgba(0,33,77,.45) 58%,rgba(0,33,77,.12) 78%),linear-gradient(0deg,rgba(0,33,77,.88) 0%,rgba(0,33,77,0) 42%)',
             pointerEvents: 'none',
           }}
         />
@@ -353,89 +369,92 @@ export default function HomePage() {
           }}
         />
         <div
-          className="sj-section-pad"
+          className="sj-section-pad sj-hero-copy"
           style={{
             position: 'relative',
             width: '100%',
             maxWidth: '1280px',
             margin: '0 auto',
-            padding: 'clamp(180px,24vh,220px) 28px 0',
+            padding: 'var(--sj-hero-pad-top, 220px) 28px 0',
             pointerEvents: 'none',
           }}
         >
-          <div
-            style={{
-              fontSize: '12px',
-              fontWeight: 900,
-              letterSpacing: '.18em',
-              textTransform: 'uppercase',
-              color: '#E7BA22',
-            }}
-          >
-            St. Joseph, Michigan · Ages 5–18
-          </div>
-          <h1
-            style={{
-              fontWeight: 900,
-              fontStyle: 'italic',
-              textTransform: 'uppercase',
-              fontSize: 'clamp(38px,7.6vw,114px)',
-              lineHeight: 0.88,
-              letterSpacing: '-.035em',
-              margin: '26px 0 0',
-            }}
-          >
-            <span style={{ display: 'block' }}>One Park.</span>
-            <span style={{ display: 'block', color: '#E7BA22' }}>Many Sports.</span>
-            <span style={{ display: 'block', color: 'transparent', WebkitTextStroke: '2px #fff' }}>
-              Every Kid.
-            </span>
-          </h1>
-          <p
-            style={{
-              fontSize: 'clamp(17px,1.5vw,20px)',
-              lineHeight: 1.55,
-              color: '#E4E9F2',
-              maxWidth: '560px',
-              margin: '28px 0 0',
-              whiteSpace: 'pre-line',
-            }}
-          >
-            {`Bringing football, baseball, softball, and more together.
+          <div className="sj-hero-copy-inner">
+            <div
+              style={{
+                fontSize: '12px',
+                fontWeight: 900,
+                letterSpacing: '.18em',
+                textTransform: 'uppercase',
+                color: '#E7BA22',
+              }}
+            >
+              St. Joseph, Michigan · Ages 5–18
+            </div>
+            <h1
+              className="sj-hero-title"
+              style={{
+                fontWeight: 900,
+                fontStyle: 'italic',
+                textTransform: 'uppercase',
+                fontSize: 'clamp(38px,6.4vw,96px)',
+                lineHeight: 0.9,
+                letterSpacing: '-.035em',
+                margin: '26px 0 0',
+              }}
+            >
+              <span style={{ display: 'block' }}>One Park.</span>
+              <span style={{ display: 'block', color: '#E7BA22' }}>Many Sports.</span>
+              <span style={{ display: 'block', color: 'transparent', WebkitTextStroke: '2px #fff' }}>
+                Every Kid.
+              </span>
+            </h1>
+            <p
+              style={{
+                fontSize: 'clamp(17px,1.5vw,20px)',
+                lineHeight: 1.55,
+                color: '#E4E9F2',
+                maxWidth: '520px',
+                margin: '28px 0 0',
+                whiteSpace: 'pre-line',
+              }}
+            >
+              {`Bringing football, baseball, softball, and more together.
 A place for St. Joseph kids to play, grow, and thrive.
 Built for ages 5–18 and every ability.`}
-          </p>
-          <div
-            style={{
-              display: 'flex',
-              gap: '16px',
-              flexWrap: 'wrap',
-              marginTop: '34px',
-              pointerEvents: 'auto',
-            }}
-          >
-            <a
-              href="#park"
+            </p>
+            <div
               style={{
-                display: 'inline-block',
-                background: '#E7BA22',
-                color: '#00214D',
-                padding: '18px 34px',
-                transform: 'skewX(-12deg)',
-                borderRadius: '10px',
-                fontWeight: 900,
-                fontSize: '15px',
-                letterSpacing: '.08em',
-                textTransform: 'uppercase',
+                display: 'flex',
+                gap: '16px',
+                flexWrap: 'wrap',
+                marginTop: '34px',
+                pointerEvents: 'auto',
               }}
-              data-hover='{"background": "#fff", "color": "#00214D"}'
             >
-              <span style={{ display: 'inline-block', transform: 'skewX(12deg)' }}>
-                See the Plan
-              </span>
-            </a>
+              <a
+                href="#park"
+                style={{
+                  display: 'inline-block',
+                  background: '#E7BA22',
+                  color: '#00214D',
+                  padding: '18px 34px',
+                  transform: 'skewX(-12deg)',
+                  borderRadius: '10px',
+                  fontWeight: 900,
+                  fontSize: '15px',
+                  letterSpacing: '.08em',
+                  textTransform: 'uppercase',
+                }}
+                data-hover='{"background": "#fff", "color": "#00214D"}'
+              >
+                <span style={{ display: 'inline-block', transform: 'skewX(12deg)' }}>
+                  See the Plan
+                </span>
+              </a>
+            </div>
           </div>
-          <div style={{ height: 'clamp(56px,8vh,96px)' }} />
+          <div className="sj-hero-spacer" style={{ height: 'clamp(56px,8vh,96px)' }} />
         </div>
       </section>
       <section id="about" data-screen-label="About" className="sj-section-pad sj-section-y" style={{position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '110px 28px'}}>
@@ -801,23 +820,18 @@ Built for ages 5–18 and every ability.`}
             </div>
           </div>
           <div className="sj-gallery-grid">
-            {[
-              { src: '/images/img-12.jpg', alt: 'Athletes celebrating on the field', style: { gridColumn: '1', gridRow: '1 / span 2' } },
-              { src: '/images/img-6.jpg', alt: 'Kids catching a pass', style: { gridColumn: '2', gridRow: '1' } },
-              { src: '/images/img-11.jpg', alt: 'Flag football matchup', style: { gridColumn: '3', gridRow: '1' } },
-              { src: '/images/img-9.jpg', alt: 'Player running with the football', style: { gridColumn: '3', gridRow: '2' } },
-              { src: '/images/img-10.jpg', alt: 'Open-field flag pull', style: { gridColumn: '4', gridRow: '1' } },
-              { src: '/images/img-13.jpg', alt: 'Kids tracking a pass', style: { gridColumn: '2', gridRow: '2' } },
-              { src: '/images/img-8.jpg', alt: 'Bears paw prints on the trail', style: { gridColumn: '4', gridRow: '2' } },
-              { src: '/images/img-5.jpg', alt: 'Championship trophy circle', style: { gridColumn: '5', gridRow: '1 / span 2' } },
-            ].map((g, gIdx) => (
+            {galleryItems.map((g, gIdx) => (
               <button
                 key={g.src}
                 type="button"
+                className={
+                  gIdx === 0 || gIdx === 5 || gIdx === 10 || gIdx === 15
+                    ? "sj-gallery-feature"
+                    : undefined
+                }
                 onClick={() => openLightbox(galleryLightbox, gIdx)}
                 aria-label={`View larger: ${g.alt}`}
                 style={{
-                  ...g.style,
                   position: 'relative',
                   padding: 0,
                   border: 0,

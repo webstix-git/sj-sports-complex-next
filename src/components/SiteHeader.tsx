@@ -21,13 +21,12 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
   const logoRef = useRef<HTMLImageElement>(null);
   const headInnerRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [solid, setSolid] = useState(!home);
+  const [scrolledSolid, setScrolledSolid] = useState(false);
   const [activeId, setActiveId] = useState<string>("");
+  const solid = !home || scrolledSolid;
 
   useEffect(() => {
     if (!home) {
-      setSolid(true);
-      setActiveId("");
       const lg = logoRef.current;
       const hi = headInnerRef.current;
       if (lg) {
@@ -44,12 +43,18 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
       const hero = document.getElementById("top");
       const top = hero ? hero.getBoundingClientRect().top : 0;
       const nextSolid = top < -60;
-      setSolid(nextSolid);
+      setScrolledSolid(nextSolid);
       const lg = logoRef.current;
       const hi = headInnerRef.current;
       if (lg) {
-        lg.style.height = nextSolid ? "72px" : "160px";
-        lg.style.filter = nextSolid ? "none" : "drop-shadow(0 8px 18px rgba(0,0,0,.45))";
+        // Let CSS control logo size on tablet/mobile; only set desktop hero size inline.
+        const narrow = window.matchMedia("(max-width: 1024px)").matches;
+        if (!narrow) {
+          lg.style.height = nextSolid ? "72px" : "160px";
+        } else {
+          lg.style.height = "";
+        }
+        lg.style.filter = nextSolid || narrow ? "none" : "drop-shadow(0 8px 18px rgba(0,0,0,.45))";
       }
       if (hi) hi.style.minHeight = "0";
 
@@ -70,8 +75,9 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
     };
     document.addEventListener("scroll", onScroll, { passive: true, capture: true });
     window.addEventListener("resize", onScroll);
-    tick();
+    raf = requestAnimationFrame(tick);
     return () => {
+      if (raf) cancelAnimationFrame(raf);
       document.removeEventListener("scroll", onScroll, { capture: true } as AddEventListenerOptions);
       window.removeEventListener("resize", onScroll);
     };
