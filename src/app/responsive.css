@@ -217,6 +217,79 @@ body {
   width: 100%;
 }
 
+.sj-miracle-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: center;
+}
+
+
+.sj-miracle-points {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.sj-miracle-points > li {
+  position: relative;
+  padding-left: 28px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #00214d;
+}
+
+.sj-miracle-points > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #e7ba22;
+}
+
+.sj-miracle-aside {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.sj-miracle-logo-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 10px 24px rgba(0, 33, 77, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.sj-miracle-logo-frame {
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: none;
+  background: #fff;
+}
+
+.sj-miracle-logo-frame > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
 .sj-sports-card {
   position: relative;
   display: block;
@@ -289,15 +362,31 @@ body {
 
 .sj-gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  grid-auto-flow: dense;
-  grid-auto-rows: 220px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 10px;
   margin-top: 40px;
 }
 
-.sj-gallery-grid > .sj-gallery-feature {
-  grid-column: span 2;
+.sj-gallery-item {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  border: 0;
+  background: #001a3d;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.sj-gallery-item > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .sj-park-headline-line {
@@ -700,14 +789,8 @@ body {
   }
 
   .sj-gallery-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 180px;
-  }
-
-  .sj-gallery-grid > .sj-gallery-feature {
-    grid-column: span 2;
-    grid-row: span 1;
-    min-height: 220px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .sj-team-grid {
@@ -757,6 +840,16 @@ body {
     grid-template-columns: 1fr;
     margin-top: 40px;
   }
+
+  .sj-miracle-layout {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .sj-miracle-aside {
+    order: -1;
+  }
+
 
   .sj-park-scoreboards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -840,12 +933,6 @@ body {
 
   .sj-gallery-grid {
     grid-template-columns: 1fr;
-    grid-auto-rows: 200px;
-  }
-
-  .sj-gallery-grid > .sj-gallery-feature {
-    grid-column: auto;
-    grid-row: auto;
   }
 
   .site-brand {

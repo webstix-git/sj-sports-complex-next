@@ -41,6 +41,7 @@ const keyPages = [
   { href: "/#about", label: "About" },
   { href: "/#story", label: "Our Story" },
   { href: "/#programs", label: "Sports" },
+  { href: "/#miracle", label: "Miracle Field" },
   { href: "/#park", label: "The Park" },
   { href: "/#gallery", label: "Gallery" },
   { href: "/#location", label: "Location" },
@@ -113,8 +114,8 @@ export default function AiReadinessPage() {
       <PolicySection title="Sports & programs">
         <FactList>
           <FactRow label="Rocket Football">
-            Dedicated game field and practice field so Rocket Football has a home of its own—no more
-            juggling the schedule.
+            Dedicated game field and practice field so Rocket Football has a home of its own, with no
+            more juggling the schedule.
           </FactRow>
           <FactRow label="Flag Football">
             Three flag football fields for younger players, with steadier practice times families can
@@ -125,10 +126,11 @@ export default function AiReadinessPage() {
             including SJBSA.
           </FactRow>
           <FactRow label="Softball">
-            Two softball fields, including one that doubles as the Miracle League / accessible field.
+            Two softball fields, including one designated Miracle League field with composite turf for
+            wheelchair accessibility.
           </FactRow>
           <FactRow label="Ages & levels">
-            Planned for ages 5–18 and every skill level—football in the fall and ball fields all
+            Planned for ages 5–18 and every skill level: football in the fall and ball fields all
             summer.
           </FactRow>
         </FactList>
@@ -138,7 +140,7 @@ export default function AiReadinessPage() {
         <FactList>
           <FactRow label="Size">Nearly 40 acres at Maiden Lane &amp; Hollywood Road.</FactRow>
           <FactRow label="Athletic fields">
-            9 total — 5 football fields and 4 baseball &amp; softball diamonds, including 1 Miracle
+            9 total: 5 football fields and 4 baseball &amp; softball diamonds, including 1 Miracle
             League field.
           </FactRow>
           <FactRow label="Fields detail">
@@ -149,7 +151,7 @@ export default function AiReadinessPage() {
             Locker rooms, medical room, indoor batting cages, and concession stands.
           </FactRow>
           <FactRow label="Community amenities">
-            Accessible playground and splash pad, 1.5-mile walking and fitness trail, and sufficient
+            Accessible playground and splash pad, 1.5-mile walking and fitness trail, pavilion, and sufficient
             parking. Designed for athletes with disabilities from the first drawings.
           </FactRow>
           <FactRow label="Public partnership">
@@ -165,7 +167,7 @@ export default function AiReadinessPage() {
             501(c)(3) nonprofit building a public youth sports park for the community
           </li>
           <li style={{ marginBottom: "8px" }}>
-            Accessible fields and dugouts planned in from day one—including a Miracle League field
+            Accessible fields and dugouts planned in from day one, including a Miracle League field
           </li>
           <li style={{ marginBottom: "8px" }}>
             Room for every player so local programs do not have to cap sign-ups for lack of fields
@@ -220,15 +222,15 @@ export default function AiReadinessPage() {
         />
         <Faq
           q="What sports will the park support?"
-          a="Rocket Football, Flag Football, Baseball, and Softball—for ages 5–18 and every skill level."
+          a="Rocket Football, Flag Football, Baseball, and Softball for ages 5–18 and every skill level. One of the two softball fields will be a designated Miracle League field with composite turf for wheelchair accessibility."
         />
         <Faq
           q="What is being built?"
-          a="Nearly 40 acres with 9 athletic fields (including a Miracle League field), locker rooms, medical room, indoor batting cages, concessions, an accessible playground and splash pad, a 1.5-mile walking and fitness trail, and parking."
+          a="Nearly 40 acres with 9 athletic fields (including a Miracle League field), locker rooms, medical room, indoor batting cages, concessions, an accessible playground and splash pad, a 1.5-mile walking and fitness trail, a pavilion, and parking."
         />
         <Faq
           q="Is the park accessible?"
-          a="Yes. Accessible fields and dugouts are designed in from the first drawings, including a Miracle League field. When SJYSF started, there was no accessible field or dugout within 55 miles of the community."
+          a="Yes. Accessible fields and dugouts are designed in from the first drawings, including a Miracle League field with special composite turf for wheelchair accessibility. When SJYSF started, there was no accessible field or dugout within 55 miles of the community."
         />
         <Faq
           q="Who maintains the park when it is finished?"
@@ -246,7 +248,7 @@ export default function AiReadinessPage() {
         />
         <Faq
           q="Who is on the board?"
-          a="Nicole Schmitt (President), Veronica Jackson (Vice President), Nanci Fenrick (Secretary / Treasurer), Ryan Cheevers (Strategic Content Director), Paul Knapp (Community Outreach), and Michael Fernandez (Fundraising Director)."
+          a="Nicole Schmitt (President), Ryan Cheevers (Vice President), Nanci Fenrick (Secretary / Treasurer), Paul Knapp (Community Outreach), and Michael Fernandez (Fundraising Director)."
         />
       </PolicySection>
 

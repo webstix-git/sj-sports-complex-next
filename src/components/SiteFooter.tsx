@@ -7,6 +7,7 @@ type SiteFooterProps = {
 const explore = [
   { href: "about", label: "Mission" },
   { href: "programs", label: "Sports" },
+  { href: "miracle", label: "Miracle Field" },
   { href: "park", label: "The Park" },
   { href: "gallery", label: "Gallery" },
   { href: "location", label: "Location" },

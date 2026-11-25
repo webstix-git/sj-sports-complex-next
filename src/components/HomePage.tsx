@@ -174,7 +174,7 @@ export default function HomePage() {
       tag: "Diamond",
       name: "Softball",
       fields: "2 softball fields",
-      desc: "Two fields for softball, including one that doubles as the Miracle League field.",
+      desc: "Two softball fields. 1 of them will also serve as a Miracle League field.",
       ph: "Softball photo",
     },
   ];
@@ -210,30 +210,30 @@ export default function HomePage() {
       title: "Facilities",
       sub: "Behind the scenes",
       items: [
-        { q: "1", t: "Locker Rooms" },
-        { q: "2", t: "Medical Room" },
-        { q: "3", t: "Indoor Batting Cages" },
-        { q: "4", t: "Concession Stands" },
+        { t: "Locker Rooms" },
+        { t: "Medical Room" },
+        { t: "Indoor Batting Cages" },
+        { t: "Concession Stands" },
       ],
     },
     {
       title: "Community",
       sub: "For families",
       items: [
-        { q: "1", t: "Accessible Playground and Splash Pad" },
-        { q: "2", t: "1.5-Mile Walking and Fitness Trail" },
-        { q: "3", t: "Sufficient Parking" },
+        { t: "Accessible Playground and Splash Pad" },
+        { t: "1.5-Mile Walking and Fitness Trail" },
+        { t: "Pavilion" },
+        { t: "Sufficient Parking" },
       ],
     },
   ];
 
   const board = [
     { no: "1", i: "NS", n: "Nicole Schmitt", r: "President" },
-    { no: "2", i: "VJ", n: "Veronica Jackson", r: "Vice President" },
+    { no: "2", i: "RC", n: "Ryan Cheevers", r: "Vice President" },
     { no: "3", i: "NF", n: "Nanci Fenrick", r: "Secretary / Treasurer" },
-    { no: "4", i: "RC", n: "Ryan Cheevers", r: "Strategic Content Director" },
-    { no: "5", i: "PK", n: "Paul Knapp", r: "Community Outreach" },
-    { no: "6", i: "MF", n: "Michael Fernandez", r: "Fundraising Director" },
+    { no: "4", i: "PK", n: "Paul Knapp", r: "Community Outreach" },
+    { no: "5", i: "MF", n: "Michael Fernandez", r: "Fundraising Director" },
   ];
 
   const notSent = !sent;
@@ -266,6 +266,11 @@ export default function HomePage() {
     { src: "/images/gallery/gallery-14.jpg", alt: "Young athlete throwing a football" },
     { src: "/images/gallery/gallery-15.jpg", alt: "Open-field flag football chase" },
     { src: "/images/gallery/gallery-16.jpg", alt: "Players racing for the football" },
+    { src: "/images/gallery/gallery-17.jpg", alt: "Softball All-Stars team with trophies" },
+    { src: "/images/gallery/gallery-18.jpg", alt: "Saint Joseph baseball and softball team photo" },
+    { src: "/images/gallery/gallery-19.jpg", alt: "Swing for a Cure softball team on the field" },
+    { src: "/images/gallery/gallery-20.jpg", alt: "Saint Joseph baseball team in yellow jerseys" },
+    { src: "/images/gallery/gallery-21.jpg", alt: "Blues baseball team with Great Lakes Championships banner" },
   ];
   const galleryLightbox = galleryItems;
 
@@ -601,8 +606,8 @@ Built for ages 5–18 and every ability.`}
             ))}
           </div>
         </div>
-        <div style={{background: '#F3F1EA', color: '#1A1F21', padding: '80px 0'}}>
-          <div className="sj-section-pad" style={{maxWidth: '1280px', margin: '0 auto', padding: '0 28px'}}>
+        <div style={{position: 'relative', background: '#F3F1EA', color: '#1A1F21', padding: '80px 0', overflow: 'hidden'}}>
+          <div className="sj-section-pad" style={{position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '0 28px'}}>
             <div style={{maxWidth: '560px'}}>
               <div style={{fontSize: '12px', fontWeight: '900', letterSpacing: '.22em', textTransform: 'uppercase', color: '#00214D'}}>
                 Leadership
@@ -685,6 +690,64 @@ Built for ages 5–18 and every ability.`}
           </div>
         </div>
       </section>
+      <section id="miracle" data-screen-label="Miracle League" className="sj-section-y sj-miracle" style={{position: 'relative', background: '#F3F1EA', color: '#00214D', padding: '100px 0', borderTop: '6px solid #E7BA22', overflow: 'hidden'}}>
+        <div className="sj-section-pad" style={{position: 'relative', zIndex: 1, maxWidth: '1280px', margin: '0 auto', padding: '0 28px'}}>
+          <div className="sj-miracle-layout">
+            <div className="sj-miracle-copy">
+              <div style={{fontSize: '12px', fontWeight: '900', letterSpacing: '.22em', textTransform: 'uppercase', color: '#00214D', display: 'flex', alignItems: 'center', gap: '12px'}}>
+                Miracle League
+              </div>
+              <h2 style={{fontWeight: '900', fontStyle: 'italic', textTransform: 'uppercase', fontSize: 'clamp(34px,4.4vw,60px)', lineHeight: 'calc(1em + 10px)', letterSpacing: '-.02em', margin: '16px 0 0', color: '#00214D'}}>
+                <span style={{display: 'block', color: '#00214D'}}>Every kid</span>
+                <span style={{display: 'block', color: '#E7BA22'}}>gets to play.</span>
+              </h2>
+              <p style={{margin: '18px 0 0', maxWidth: '540px', fontSize: '18px', lineHeight: 'calc(1em + 10px)', color: '#00214D'}}>
+                Ability should never keep a kid off the field. One of our softball diamonds will be a designated Miracle League field with special composite turf for wheelchair accessibility, so athletes of every ability can step up to the plate right here in St. Joseph.
+              </p>
+              <ul className="sj-miracle-points">
+                <li>One softball field doubles as the Miracle League diamond</li>
+                <li>Composite turf designed for wheelchair accessibility</li>
+                <li>Miracle League of St. Joseph, a network member since October 2022</li>
+              </ul>
+              <div style={{display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '28px'}}>
+                <a
+                  href="#contact"
+                  style={{display: 'inline-flex', alignItems: 'center', gap: '10px', background: '#E7BA22', color: '#00214D', padding: '14px 26px', transform: 'skewX(-12deg)', borderRadius: '10px', fontWeight: '900', fontSize: '13px', letterSpacing: '.08em', textTransform: 'uppercase'}}
+                  data-hover='{"background": "#00214D", "color": "#fff"}'
+                >
+                  <span style={{display: 'inline-block', transform: 'skewX(12deg)'}}>
+                    Ask about Miracle League
+                  </span>
+                </a>
+                <a
+                  href="tel:2694146048"
+                  style={{display: 'inline-flex', alignItems: 'center', gap: '10px', border: '2px solid #00214D', color: '#00214D', padding: '16px 28px', transform: 'skewX(-12deg)', borderRadius: '10px', fontWeight: '900', fontSize: '14px', letterSpacing: '.08em', textTransform: 'uppercase'}}
+                  data-hover='{"background": "#00214D", "borderColor": "#00214D", "color": "#fff"}'
+                >
+                  <span style={{display: 'inline-flex', alignItems: 'center', gap: '10px', transform: 'skewX(12deg)'}}>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2z" />
+                    </svg>
+                    269-414-6048
+                  </span>
+                </a>
+              </div>
+            </div>
+            <div className="sj-miracle-aside">
+              <div className="sj-miracle-logo-card">
+                <div className="sj-miracle-logo-frame">
+                  <img
+                    src="/images/miracle-league-logo.png"
+                    alt="The Miracle League St. Joseph logo"
+                    width={363}
+                    height={352}
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <section id="park" data-screen-label="Facilities & Amenities" className="sj-fixed-bg sj-section-y" style={{position: 'relative', backgroundColor: '#0F2A12', backgroundImage: 'url(/images/img-15.jpg)', backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', color: '#fff', padding: '0 0 110px', overflow: 'hidden', marginTop: '0', borderTop: '6px solid #E7BA22'}}>
         <div style={{position: 'absolute', inset: 0, background: 'linear-gradient(180deg,rgba(8,18,10,.82) 0%,rgba(8,18,10,.68) 45%,rgba(8,18,10,.88) 100%)', pointerEvents: 'none'}} aria-hidden="true" />
         <div className="sj-section-pad" style={{position: 'relative', maxWidth: '1280px', margin: '0 auto', padding: '90px 28px 0'}}>
@@ -735,11 +798,11 @@ Built for ages 5–18 and every ability.`}
                   <div style={{marginTop: '10px', display: 'flex', flexDirection: 'column', gap: '6px'}}>
                     {g.items.map((it, itIdx) => (
                       <React.Fragment key={itIdx}>
-                        <div style={{display: 'grid', gridTemplateColumns: 'minmax(0,1fr) 58px', alignItems: 'center', gap: '12px', background: 'radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.4px) 0 0/6px 6px,#0B0D0E', borderRadius: '4px', padding: '8px 8px 8px 14px'}}>
+                        <div style={{display: 'grid', gridTemplateColumns: 'q' in it && it.q ? 'minmax(0,1fr) 58px' : 'minmax(0,1fr)', alignItems: 'center', gap: '12px', background: 'radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.4px) 0 0/6px 6px,#0B0D0E', borderRadius: '4px', padding: 'q' in it && it.q ? '8px 8px 8px 14px' : '12px 14px'}}>
                           <span style={{fontSize: '14px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '.05em', lineHeight: '1.3', color: '#fff'}}>
                             {it.t}
                           </span>
-                          <ScoreboardCount value={Number(it.q)} size="sm" />
+                          {'q' in it && it.q ? <ScoreboardCount value={Number(it.q)} size="sm" /> : null}
                         </div>
                       </React.Fragment>
                     ))}
@@ -824,23 +887,11 @@ Built for ages 5–18 and every ability.`}
               <button
                 key={g.src}
                 type="button"
-                className={
-                  gIdx === 0 || gIdx === 5 || gIdx === 10 || gIdx === 15
-                    ? "sj-gallery-feature"
-                    : undefined
-                }
+                className="sj-gallery-item"
                 onClick={() => openLightbox(galleryLightbox, gIdx)}
                 aria-label={`View larger: ${g.alt}`}
-                style={{
-                  position: 'relative',
-                  padding: 0,
-                  border: 0,
-                  background: 'transparent',
-                  cursor: 'zoom-in',
-                  overflow: 'hidden',
-                }}
               >
-                <img src={g.src} alt={g.alt} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={g.src} alt={g.alt} />
               </button>
             ))}
           </div>

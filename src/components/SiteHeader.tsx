@@ -10,6 +10,7 @@ type SiteHeaderProps = {
 const nav = [
   { href: "about", label: "About" },
   { href: "programs", label: "Sports" },
+  { href: "miracle", label: "Miracle Field" },
   { href: "park", label: "The Park" },
   { href: "gallery", label: "Gallery" },
   { href: "location", label: "Location" },
