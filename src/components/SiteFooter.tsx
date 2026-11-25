@@ -14,8 +14,7 @@ const explore = [
   { href: "contact", label: "Contact" },
 ] as const;
 
-const mailMapsUrl =
-  "https://www.google.com/maps/search/?api=1&query=1816+Nash+Dr,+St.+Joseph,+MI+49085";
+const mailMapsUrl = "https://maps.app.goo.gl/r6NhCR8BDQaojjdL6";
 
 export default function SiteFooter({ home = false }: SiteFooterProps) {
   const link = (id: string) => (home ? `#${id}` : `/#${id}`);

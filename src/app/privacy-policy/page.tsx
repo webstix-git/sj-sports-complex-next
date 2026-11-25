@@ -82,7 +82,7 @@ export default function PrivacyPolicyPage() {
         <p>
           Mailing address:{" "}
           <a
-            href="https://www.google.com/maps/search/?api=1&query=1816+Nash+Dr,+St.+Joseph,+MI+49085"
+            href="https://maps.app.goo.gl/r6NhCR8BDQaojjdL6"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -7,21 +7,57 @@ type SiteHeaderProps = {
   home?: boolean;
 };
 
-const nav = [
-  { href: "about", label: "About" },
-  { href: "programs", label: "Sports" },
+type NavChild = { href: string; label: string };
+type NavItem = { href: string; label: string; children?: readonly NavChild[] };
+
+const sportsChildren = [
+  { href: "sport-rocket", label: "Rocket Football" },
+  { href: "sport-flag", label: "Flag Football" },
+  { href: "sport-baseball", label: "Baseball" },
+  { href: "sport-softball", label: "Softball" },
   { href: "miracle", label: "Miracle Field" },
+] as const;
+
+const nav: readonly NavItem[] = [
+  { href: "about", label: "About" },
+  { href: "programs", label: "Sports", children: sportsChildren },
   { href: "park", label: "The Park" },
   { href: "gallery", label: "Gallery" },
   { href: "location", label: "Location" },
   { href: "contact", label: "Contact" },
+];
+
+const spyTargets = [
+  "about",
+  "programs",
+  "sport-rocket",
+  "sport-flag",
+  "sport-baseball",
+  "sport-softball",
+  "miracle",
+  "park",
+  "gallery",
+  "location",
+  "contact",
 ] as const;
+
+function sectionToNavId(sectionId: string): string {
+  if (
+    sectionId === "programs" ||
+    sectionId === "miracle" ||
+    sectionId.startsWith("sport-")
+  ) {
+    return "programs";
+  }
+  return sectionId;
+}
 
 export default function SiteHeader({ home = false }: SiteHeaderProps) {
   const headerRef = useRef<HTMLElement>(null);
   const logoRef = useRef<HTMLImageElement>(null);
   const headInnerRef = useRef<HTMLDivElement>(null);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sportsOpen, setSportsOpen] = useState(false);
   const [scrolledSolid, setScrolledSolid] = useState(false);
   const [activeId, setActiveId] = useState<string>("");
   const solid = !home || scrolledSolid;
@@ -48,7 +84,6 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
       const lg = logoRef.current;
       const hi = headInnerRef.current;
       if (lg) {
-        // Let CSS control logo size on tablet/mobile; only set desktop hero size inline.
         const narrow = window.matchMedia("(max-width: 1024px)").matches;
         if (!narrow) {
           lg.style.height = nextSolid ? "72px" : "160px";
@@ -62,11 +97,11 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
       const headerH = headerRef.current?.offsetHeight ?? 88;
       const marker = headerH + 24;
       let current = "";
-      for (const item of nav) {
-        const el = document.getElementById(item.href);
+      for (const id of spyTargets) {
+        const el = document.getElementById(id);
         if (!el) continue;
         if (el.getBoundingClientRect().top <= marker) {
-          current = item.href;
+          current = sectionToNavId(id);
         }
       }
       setActiveId(current);
@@ -85,11 +120,17 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
   }, [home]);
 
   useEffect(() => {
-    if (!menuOpen) return;
+    if (!menuOpen) {
+      setSportsOpen(false);
+      return;
+    }
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        setSportsOpen(false);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => {
@@ -192,16 +233,39 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
           )}
 
           <nav className="site-nav-desktop" aria-label="Primary">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={link(item.href)}
-                className={activeId === item.href ? "is-active" : undefined}
-                aria-current={activeId === item.href ? "true" : undefined}
-              >
-                {item.label}
-              </a>
-            ))}
+            {nav.map((item) =>
+              item.children ? (
+                <div key={item.href} className="site-nav-dropdown">
+                  <a
+                    href={link(item.href)}
+                    className={activeId === item.href ? "is-active" : undefined}
+                    aria-current={activeId === item.href ? "true" : undefined}
+                    aria-haspopup="true"
+                  >
+                    {item.label}
+                    <svg width="10" height="10" viewBox="0 0 12 12" fill="currentColor" aria-hidden="true">
+                      <path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </a>
+                  <div className="site-nav-menu" role="menu">
+                    {item.children.map((child) => (
+                      <a key={child.href} href={link(child.href)} role="menuitem">
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={item.href}
+                  href={link(item.href)}
+                  className={activeId === item.href ? "is-active" : undefined}
+                  aria-current={activeId === item.href ? "true" : undefined}
+                >
+                  {item.label}
+                </a>
+              )
+            )}
           </nav>
 
           <button
@@ -228,17 +292,59 @@ export default function SiteHeader({ home = false }: SiteHeaderProps) {
         hidden={!menuOpen}
       >
         <nav aria-label="Mobile">
-          {nav.map((item) => (
-            <a
-              key={item.href}
-              href={link(item.href)}
-              className={activeId === item.href ? "is-active" : undefined}
-              aria-current={activeId === item.href ? "true" : undefined}
-              onClick={() => setMenuOpen(false)}
-            >
-              {item.label}
-            </a>
-          ))}
+          {nav.map((item) =>
+            item.children ? (
+              <div key={item.href} className="site-mobile-dropdown">
+                <button
+                  type="button"
+                  className={`site-mobile-dropdown-trigger${activeId === item.href ? " is-active" : ""}`}
+                  aria-expanded={sportsOpen}
+                  onClick={() => setSportsOpen((o) => !o)}
+                >
+                  <span>{item.label}</span>
+                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                    <path
+                      d={sportsOpen ? "M2.5 7.5 6 4l3.5 3.5" : "M2.5 4.5 6 8l3.5-3.5"}
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+                {sportsOpen ? (
+                  <div className="site-mobile-submenu">
+                    <a
+                      href={link(item.href)}
+                      className={activeId === item.href ? "is-active" : undefined}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      All Sports
+                    </a>
+                    {item.children.map((child) => (
+                      <a
+                        key={child.href}
+                        href={link(child.href)}
+                        onClick={() => setMenuOpen(false)}
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
+              </div>
+            ) : (
+              <a
+                key={item.href}
+                href={link(item.href)}
+                className={activeId === item.href ? "is-active" : undefined}
+                aria-current={activeId === item.href ? "true" : undefined}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            )
+          )}
         </nav>
       </div>
     </header>

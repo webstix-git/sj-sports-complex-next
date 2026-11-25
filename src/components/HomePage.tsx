@@ -239,8 +239,7 @@ export default function HomePage() {
   const notSent = !sent;
   const parkMapsUrl =
     "https://www.google.com/maps/search/?api=1&query=Maiden+Ln+%26+Hollywood+Rd,+St.+Joseph,+MI";
-  const mailMapsUrl =
-    "https://www.google.com/maps/search/?api=1&query=1816+Nash+Dr,+St.+Joseph,+MI+49085";
+  const mailMapsUrl = "https://maps.app.goo.gl/r6NhCR8BDQaojjdL6";
   const parkDirectionsUrl =
     "https://www.google.com/maps/dir/?api=1&destination=Maiden+Ln+and+Hollywood+Rd,+St.+Joseph,+MI";
 
@@ -678,7 +677,7 @@ Built for ages 5–18 and every ability.`}
           </div>
           <div className="sj-sports-grid">
             {sports.map((p) => (
-              <a key={p.num} href="#contact" className="sj-sports-card">
+              <a key={p.num} id={p.slot} href="#contact" className="sj-sports-card">
                 <img src={p.img} alt={p.ph} />
                 <span className="sj-sports-shade" aria-hidden="true" />
                 <span className="sj-sports-num" aria-hidden="true">
